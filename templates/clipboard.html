@@ -1,0 +1,176 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+Clipboard
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-10 col-lg-9">
+
+
+            <div class="card shadow-sm border-0">
+
+
+                <div class="card-body p-4 p-md-5">
+
+
+                    <!-- Header -->
+
+                    <div
+                        class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4"
+                    >
+
+                        <div>
+
+                            <h3 class="fw-bold mb-1">
+
+                                <i class="bi bi-clipboard me-2"></i>
+
+                                Clipboard
+
+                            </h3>
+
+
+                            <small class="text-muted">
+
+                                ID:
+                                <span class="font-monospace">
+                                    {{ clipboard.id }}
+                                </span>
+
+                            </small>
+
+                        </div>
+
+
+                        <button
+                            class="btn btn-outline-primary"
+                            type="button"
+                            onclick="copyClipboardData(this)"
+                        >
+
+                            <i class="bi bi-copy me-2"></i>
+
+                            Copy Data
+
+                        </button>
+
+                    </div>
+
+
+                    <hr>
+
+
+                    <!-- Clipboard Content -->
+
+                    <div class="mb-4">
+
+                        <label
+                            for="clipboardData"
+                            class="form-label fw-semibold"
+                        >
+                            Clipboard Data
+                        </label>
+
+
+                        <textarea
+                            class="form-control clipboard-output"
+                            id="clipboardData"
+                            rows="16"
+                            readonly
+                        >{{ clipboard.content }}</textarea>
+
+                    </div>
+
+
+                    <!-- Metadata -->
+
+                    <div
+                        class="d-flex flex-column flex-md-row justify-content-between gap-2"
+                    >
+
+                        <small class="text-muted">
+
+                            <i class="bi bi-clock me-1"></i>
+
+                            Created:
+                            {{ clipboard.created_at }}
+
+                        </small>
+
+
+                        <small class="text-muted">
+
+                            <i class="bi bi-hourglass-split me-1"></i>
+
+                            Expires after 1 hour
+
+                        </small>
+
+                    </div>
+
+
+                    <!-- New Clipboard -->
+
+                    <div class="mt-4">
+
+                        <a
+                            href="{{ url_for('home') }}"
+                            class="btn btn-secondary"
+                        >
+
+                            <i class="bi bi-plus-circle me-2"></i>
+
+                            Create New Clipboard
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+function copyClipboardData(button) {
+
+    const data =
+        document.getElementById("clipboardData").value;
+
+    navigator.clipboard.writeText(data);
+
+    const originalContent = button.innerHTML;
+
+    button.innerHTML =
+        '<i class="bi bi-check-lg me-2"></i> Copied!';
+
+    setTimeout(function () {
+
+        button.innerHTML = originalContent;
+
+    }, 1500);
+
+}
+
+</script>
+
+{% endblock %}

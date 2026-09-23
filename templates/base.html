@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}Clipboard{% endblock %}
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Custom CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="container">
+
+            <a
+                class="navbar-brand fw-semibold"
+                href="{{ url_for('home') }}"
+            >
+                <i class="bi bi-clipboard"></i>
+                Clipboard
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="py-4 mt-5">
+
+        <div class="container text-center">
+
+            <small class="text-muted">
+                Temporary clipboard · Data expires after 1 hour
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap JavaScript -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+
+</html>
+

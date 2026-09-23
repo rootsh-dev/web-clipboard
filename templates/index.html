@@ -1,0 +1,279 @@
+
+{% extends "base.html" %}
+
+
+{% block title %}
+Temporary Clipboard
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-9 col-lg-8 col-xl-7">
+
+
+            <!-- Page Header -->
+
+            <div class="text-center mb-4">
+
+                <div class="clipboard-icon mb-3">
+                    <i class="bi bi-clipboard"></i>
+                </div>
+
+                <h1 class="fw-bold">
+                    Temporary Clipboard
+                </h1>
+
+                <p class="text-muted">
+                    Store text temporarily and share it using a simple ID.
+                </p>
+
+            </div>
+
+
+            <!-- Create Clipboard -->
+
+            <div class="card clipboard-card shadow-sm border-0">
+
+                <div class="card-body p-4 p-md-5">
+
+                    {% if error %}
+
+                    <div
+                        class="alert alert-danger d-flex align-items-center"
+                        role="alert"
+                    >
+
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+                        <div>
+                            {{ error }}
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    <h3 class="fw-bold mb-2">
+                        Create Clipboard
+                    </h3>
+
+                    <p class="text-muted mb-4">
+                        Paste your data below to create a temporary clipboard.
+                    </p>
+
+
+                    <form method="POST">
+
+                        <div class="mb-3">
+
+                            <label
+                                for="content"
+                                class="form-label fw-semibold"
+                            >
+                                Clipboard Data
+                            </label>
+
+
+                            <textarea
+                                class="form-control clipboard-textarea"
+                                id="content"
+                                name="content"
+                                rows="12"
+                                placeholder="Paste your text, code, logs, JSON, etc..."
+                                required
+                            >{{ content }}</textarea>
+
+
+                            <div class="form-text">
+                                Maximum size: 100 KB
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-lg w-100"
+                        >
+
+                            <i class="bi bi-plus-circle me-2"></i>
+
+                            Create Clipboard
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- Retrieve Clipboard -->
+
+            <div class="card shadow-sm border-0 mt-4">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+
+                        <i class="bi bi-search fs-1"></i>
+
+                        <h3 class="fw-bold mt-2">
+                            Retrieve Clipboard
+                        </h3>
+
+                        <p class="text-muted">
+                            Enter a clipboard ID to view its contents.
+                        </p>
+
+                    </div>
+
+
+                    <form id="retrieveForm">
+
+                        <div class="mb-3">
+
+                            <label
+                                for="clipboard_id"
+                                class="form-label fw-semibold"
+                            >
+                                Clipboard ID
+                            </label>
+
+
+                            <input
+                                type="text"
+                                class="form-control form-control-lg"
+                                id="clipboard_id"
+                                placeholder="Enter clipboard ID"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-outline-primary btn-lg w-100"
+                        >
+
+                            <i class="bi bi-search me-2"></i>
+
+                            Get Clipboard
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- Features -->
+
+            <div class="row text-center mt-4 g-3">
+
+                <div class="col-md-4">
+
+                    <div class="feature-item">
+
+                        <i class="bi bi-lightning-charge"></i>
+
+                        <div class="mt-2 fw-semibold">
+                            Fast
+                        </div>
+
+                        <small class="text-muted">
+                            Create a clipboard instantly
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="feature-item">
+
+                        <i class="bi bi-share"></i>
+
+                        <div class="mt-2 fw-semibold">
+                            Easy Sharing
+                        </div>
+
+                        <small class="text-muted">
+                            Share using a simple ID
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="feature-item">
+
+                        <i class="bi bi-clock"></i>
+
+                        <div class="mt-2 fw-semibold">
+                            Temporary
+                        </div>
+
+                        <small class="text-muted">
+                            Expires after 1 hour
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+document
+    .getElementById("retrieveForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const clipboardId =
+            document
+                .getElementById("clipboard_id")
+                .value
+                .trim();
+
+        if (!clipboardId) {
+            return;
+        }
+
+        window.location.href = "/" + encodeURIComponent(clipboardId);
+
+    });
+
+</script>
+
+{% endblock %}
+

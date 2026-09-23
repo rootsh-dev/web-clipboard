@@ -1,0 +1,67 @@
+
+body {
+    background-color: #f8f9fa;
+}
+
+
+.clipboard-card {
+    border-radius: 12px;
+}
+
+
+.clipboard-textarea {
+    resize: vertical;
+    font-family: monospace;
+}
+
+
+.clipboard-output {
+    resize: vertical;
+    font-family: monospace;
+    background-color: #f8f9fa;
+}
+
+
+.clipboard-icon {
+    font-size: 3rem;
+}
+
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #d1e7dd;
+
+    color: #198754;
+
+    font-size: 2rem;
+}
+
+
+.feature-item {
+    padding: 15px;
+}
+
+
+.feature-item i {
+    font-size: 1.5rem;
+}
+
+
+textarea:focus {
+    box-shadow: none;
+}
+
+
+footer {
+    border-top: 1px solid #dee2e6;
+}
