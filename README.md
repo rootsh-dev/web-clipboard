@@ -187,8 +187,8 @@ The `.env` file contains sensitive database credentials and should not be commit
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-cd Clipboard
+git clone https://github.com/rootsh-dev/web-clipboard.git
+cd web-clipboard
 ```
 
 ### 2. Create a virtual environment
@@ -200,7 +200,7 @@ python -m venv env
 ### 3. Activate the virtual environment on Windows
 
 ```bash
-env\Scriptsctivate
+env\Scripts\activate
 ```
 
 ### 4. Install dependencies
