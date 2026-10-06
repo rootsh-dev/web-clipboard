@@ -110,7 +110,7 @@ scheduler.add_job(
     id="cleanup_expired_clipboards",
     func=cleanup_expired_clipboards,
     trigger="interval",
-    hours=1
+    hours=1,
     max_instances=1
 )
 
